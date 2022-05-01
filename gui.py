@@ -1,4 +1,4 @@
-from main import *
+from functions import *
 from state import *
 from tkinter import *
 from functools import partial
