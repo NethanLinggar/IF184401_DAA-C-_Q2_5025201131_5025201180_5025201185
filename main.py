@@ -156,7 +156,7 @@ def findBestMove(state):
     return nextState;
 
 def enterInIndex(state, index):
-    if state.state[index] != '_':
+    if index > 8 or index < 0 or state.state[index] != '_':
         print('Please enter a valid index')
         return -1
 
