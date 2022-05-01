@@ -1,4 +1,7 @@
+from tokenize import Number
 from state import *
+import sys
+
 startState = ['_', '_', '_', '_', '_', '_', '_', '_', '_']
 
 maxPlayer, minPlayer = 'X', 'O'
@@ -114,6 +117,11 @@ def findBestMove(state):
     Gets the input of a state of the game and returns a tuple
     of the best move state and it's score
     '''
+
+    if state == -1:
+        print('Invalid state')
+        exit()
+
     nextState = State(state.state, state, state.depth+1, None, None)
 
     if state.currPlayer == 'X':
@@ -142,25 +150,47 @@ def findBestMove(state):
                 bestStateIndex = i
     if bestStateIndex != -1:
         nextState.state[bestStateIndex] = state.currPlayer
-    print(bestVal)
-    print()
+
     # print("Break\n\n\n\n")
-    return (nextState, bestVal);
+    return nextState;
+
+def enterInIndex(state, index):
+    if state.state[index] != '_':
+        print('Please enter a valid index')
+        return -1
+
+    if state.currPlayer == 'X':
+        newState = State(state.state, state, state.depth + 1, None, minPlayer)
+        newState.state[index] = state.currPlayer
+    else:
+        newState = State(state.state, state, state.depth + 1, None, maxPlayer)
+        newState.state[index] = state.currPlayer
+
+    return newState
 
 def main():
-    # boardState = State(startState, None, 0, None, maxPlayer)
-    boardState = State(startState, None, 0, None, minPlayer)
+    boardState = State(startState, None, 0, None, maxPlayer)
 
+
+    print('Welcome to the program! Please enter an index')
     boardState.printState()
 
-    bestMove = findBestMove(boardState)
-    bestMove[0].printState()
+    MIndex = input()
+    MIndex = int(MIndex)
 
-    while not isGameOver(bestMove[0]):
-        bestMove = findBestMove(bestMove[0])
-        bestMove[0].printState()
+    boardState = enterInIndex(boardState, MIndex)
+    boardState = findBestMove(boardState)
 
-    print(bestMove[1])
+    while not isGameOver(boardState):
+        boardState.printState()
+        print('Please enter another index')
+        MIndex = input()
+        MIndex = int(MIndex)
+        boardState = enterInIndex(boardState, MIndex)
+        boardState = findBestMove(boardState)
+
+    print('Game Over!')
+    boardState.printState()
     return
 
 
