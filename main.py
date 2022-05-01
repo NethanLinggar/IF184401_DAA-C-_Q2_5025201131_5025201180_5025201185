@@ -155,7 +155,7 @@ def findBestMove(state):
     return nextState;
 
 def enterInIndex(state, index):
-    if state.state[index] != '_':
+    if index > 8 or index < 0 or state.state[index] != '_':
         print('Please enter a valid index')
         return -1
 
@@ -187,9 +187,6 @@ def main():
         MIndex = input()
         MIndex = int(MIndex)
         boardState = enterInIndex(boardState, MIndex)
-        if boardState == -1:
-            print('Index invalid, please enter a valid index')
-            continue
         boardState = findBestMove(boardState)
 
     print('Game Over!')
