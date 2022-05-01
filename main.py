@@ -187,6 +187,9 @@ def main():
         MIndex = input()
         MIndex = int(MIndex)
         boardState = enterInIndex(boardState, MIndex)
+        if boardState == -1:
+            print('Index invalid, please enter a valid index')
+            continue
         boardState = findBestMove(boardState)
 
     print('Game Over!')
