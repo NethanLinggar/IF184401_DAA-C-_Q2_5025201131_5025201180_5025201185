@@ -1,5 +1,5 @@
 from tokenize import Number
-# from gui import *
+from gui import *
 from state import *
 from functions import *
 
@@ -35,4 +35,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    build_gui(dim=(500,500))
