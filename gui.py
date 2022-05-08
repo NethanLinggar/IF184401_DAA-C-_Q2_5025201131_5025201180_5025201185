@@ -8,13 +8,6 @@ from functions import get_symbol, find_best_move, update_state, is_draw
 
 sys.setrecursionlimit(10000)
 
-
-def build_gui(dim):
-    root = tk.Tk()
-    App(root, dim).pack(side="top", fill="both", expand=True)
-    root.mainloop()
-
-
 class App(tk.Frame):
     def __init__(self, parent, dim, **kw):
         super().__init__(parent, **kw)

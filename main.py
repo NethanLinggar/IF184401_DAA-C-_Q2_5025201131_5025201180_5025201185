@@ -9,31 +9,33 @@ maxPlayer, minPlayer = 'X', 'O'
 bestScore = 0
 
 def main():
-    boardState = State(startState, None, 0, None, maxPlayer)
+    # boardState = State(startState, None, 0, None, maxPlayer)
 
 
-    print('Welcome to the program! Please enter an index')
-    boardState.printState()
+    # print('Welcome to the program! Please enter an index')
+    # boardState.printState()
 
-    MIndex = input()
-    MIndex = int(MIndex)
+    # MIndex = input()
+    # MIndex = int(MIndex)
 
-    boardState = enterInIndex(boardState, MIndex)
-    boardState = findBestMove(boardState)
+    # boardState = enterInIndex(boardState, MIndex)
+    # boardState = findBestMove(boardState)
 
-    while not isGameOver(boardState):
-        boardState.printState()
-        print('Please enter another index')
-        MIndex = input()
-        MIndex = int(MIndex)
-        boardState = enterInIndex(boardState, MIndex)
-        boardState = findBestMove(boardState)
+    # while not isGameOver(boardState):
+    #     boardState.printState()
+    #     print('Please enter another index')
+    #     MIndex = input()
+    #     MIndex = int(MIndex)
+    #     boardState = enterInIndex(boardState, MIndex)
+    #     boardState = findBestMove(boardState)
 
-    print('Game Over!')
-    boardState.printState()
+    # print('Game Over!')
+    # boardState.printState()
+    root = tk.Tk()
+    App(root, (500, 500)).pack(side="top", fill="both", expand=True)
+    root.mainloop()
     return
 
 
 if __name__ == "__main__":
-    # main()
-    build_gui(dim=(500,500))
+    main()
